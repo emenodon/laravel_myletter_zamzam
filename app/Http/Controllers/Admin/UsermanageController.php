@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Jabatan;
@@ -56,6 +56,17 @@ class UsermanageController extends Controller
         if (Gate::denies('manage-all')) {
             abort(403);
         }
+
+        $this->validate($request, [
+            'name'     => 'required|min:3',
+            'password'   => 'required|min:8|max:20',
+            'nama_lengkap'   => 'required|min:3',
+            'inisial'   => 'required|min:2',
+            'email'   => 'required|email',
+            'jabatan_id'   => 'required',
+            'no_hp' => 'required|min:10'
+        ]);
+
         $data = [
             'name' => $request->name,
             'password' => Hash::make($request->password),
@@ -83,6 +94,18 @@ class UsermanageController extends Controller
         if (Gate::denies('manage-all')) {
             abort(403);
         }
+
+        $this->validate($request, [
+            'name'     => 'required|min:3',
+            'password'   => 'required|min:8|max:20',
+            'nama_lengkap'   => 'required|min:3',
+            'inisial'   => 'required|min:2',
+            'email'   => 'required|email',
+            'status_blokir'   => 'required',
+            'jabatan_id'   => 'required',
+            'no_hp' => 'required|min:10'
+        ]);
+
         $data = User::where('id', $id)->first();
         $data->update([
             'name' => $request->name,

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Subject;
 use App\Http\Controllers\Controller;
@@ -55,6 +55,12 @@ class SubjectController extends Controller
         if (Gate::denies('manage-all')) {
             abort(403);
         }
+
+        $this->validate($request, [
+            'subject_name'   => 'required|min:3|max:30',
+            'inisial'   => 'required|min:2|max:5',
+        ]);
+
         $data = [
             'subject_name' => $request->subject_name,
             'inisial' => $request->inisial,
@@ -76,6 +82,12 @@ class SubjectController extends Controller
         if (Gate::denies('manage-all')) {
             abort(403);
         }
+
+        $this->validate($request, [
+            'subject_name'   => 'required|min:3|max:30',
+            'inisial'   => 'required|min:2|max:5',
+        ]);
+        
         $data = Subject::where('id', $id)->first();
         $data->update([
             'subject_name' => $request->subject_name,

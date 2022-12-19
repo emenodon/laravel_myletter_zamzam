@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Suratin;
 use App\Models\Subject;
@@ -64,6 +64,16 @@ class SuratinController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nomor'     => 'required|min:2|max:4',
+            'subject_id'   => 'required',
+            'dari_klien'   => 'required|min:3|max:30',
+            'tgl_surat'   => 'required',
+            'tgl_terima'   => 'required',
+            'penerima'   => 'required|min:3|max:20',
+            'deskripsi'   => 'required|min:3|max:255',
+        ]);
+
         $data = [
             'no_surat' => $request->nomor,
             'subject_id' => $request->subject_id,
@@ -87,6 +97,15 @@ class SuratinController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'subject_id'   => 'required',
+            'dari_klien'   => 'required|min:3|max:30',
+            'tgl_surat'   => 'required',
+            'tgl_terima'   => 'required',
+            'penerima'   => 'required|min:3|max:20',
+            'deskripsi'   => 'required|min:3|max:255',
+        ]);
+
         $data = Suratin::where('id', $id)->first();
         $data->update([
             'subject_id' => $request->subject_id,

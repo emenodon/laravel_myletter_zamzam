@@ -7,7 +7,7 @@
     </a>
   </li>
   @can('manage-all')
-  <li class="nav-item dropdown {{ request()->is('api.suratmasuk') ? 'active' : '' }}">
+  <li class="nav-item dropdown {{ request()->is('suratmasuk') ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown">
       <i class="fas fa-envelope"></i>
       <span>Surat Masuk</span>
@@ -32,7 +32,7 @@
   @endif
 
   @can('manage-separate')
-  <li class="nav-item dropdown {{ request()->is('api.userarea.suratmasuk') ? 'active' : '' }}">
+  <li class="nav-item dropdown {{ request()->is('userarea.suratmasuk') ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown">
       <i class="fas fa-envelope"></i>
       <span>Surat Masuk</span>

@@ -25,7 +25,7 @@
                         <div class="form-group row">
                             <label for="perihal" class="col-sm-3 col-form-label">Perihal</label>
                             <div class="col-sm-9">
-                                <select type="text" class="form-control selectric" aria-label="- Piih Subject Surat -" value="{{ old('subject_id', $val->subject_id) }}" name="subject_id" required placeholder="Perihal">
+                                <select type="text" class="form-control selectric @error('subject_id') is-invalid @enderror" aria-label="- Piih Subject Surat -" value="{{ old('subject_id', $val->subject_id) }}" name="subject_id" placeholder="Perihal">
                                     @if($val->subject_id)
                                     <option value="{{$val->subject_id}}" selected>{{$val->subject->subject_name}}</option>
                                     <option value="">---- Pilih Subject----</option>
@@ -37,36 +37,72 @@
                                     @else
                                     @endif
                                 </select>
+                                <!-- error message untuk subject_id -->
+                                @error('subject_id')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="dariKlien" class="col-sm-3 col-form-label">Dari Klien</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="dari_klien" placeholder="Dari Klien" value="{{ old('dari_klien', $val->dari_klien) }}" required>
+                                <input type="text" class="form-control @error('dari_klien') is-invalid @enderror" name="dari_klien" placeholder="Dari Klien" value="{{ old('dari_klien', $val->dari_klien) }}">
+                                <!-- error message untuk dari_klien -->
+                                @error('dari_klien')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tanggalSurat" class="col-sm-3 col-form-label">Tanggal Surat</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" name="tgl_surat" placeholder="Tanggal Surat" value="{{ old('tgl_surat', $val->tgl_surat) }}" required>
+                                <input type="date" class="form-control @error('tgl_surat') is-invalid @enderror" name="tgl_surat" placeholder="Tanggal Surat" value="{{ old('tgl_surat', $val->tgl_surat) }}">
+                                <!-- error message untuk tgl_surat -->
+                                @error('tgl_surat')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tanggalTerima" class="col-sm-3 col-form-label">Tanggal Terima</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" name="tgl_terima" placeholder="Tanggal Terima" value="{{ old('tgl_terima', $val->tgl_terima) }}" required>
+                                <input type="date" class="form-control @error('tgl_terima') is-invalid @enderror" name="tgl_terima" placeholder="Tanggal Terima" value="{{ old('tgl_terima', $val->tgl_terima) }}">
+                                <!-- error message untuk tgl_terima -->
+                                @error('tgl_terima')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="penerima" class="col-sm-3 col-form-label">Penerima</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="penerima" placeholder="Penerima" value="{{ old('penerima', $val->penerima) }}" required>
+                                <input type="text" class="form-control @error('penerima') is-invalid @enderror" name="penerima" placeholder="Penerima" value="{{ old('penerima', $val->penerima) }}">
+                                <!-- error message untuk penerima -->
+                                @error('penerima')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
                             <div class="col-sm-9">
-                                <textarea type="text" class="form-control" name="deskripsi" placeholder="Deskripsi" required>{{ old('deskripsi', $val->deskripsi) }}</textarea>
+                                <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" placeholder="Deskripsi" required>{{ old('deskripsi', $val->deskripsi) }}</textarea>
+                                <!-- error message untuk deskripsi -->
+                                @error('deskripsi')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
 

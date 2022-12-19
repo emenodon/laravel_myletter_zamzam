@@ -25,7 +25,7 @@
                         <div class="form-group row">
                             <label for="perihal" class="col-sm-3 col-form-label">Perihal</label>
                             <div class="col-sm-9">
-                                <select type="text" class="form-control selectric" aria-label="- Piih Subject Surat -" value="{{ old('subject_id', $val->subject_id) }}" name="subject_id" required placeholder="Perihal">
+                                <select type="text" class="form-control selectric @error('subject_id') is-invalid @enderror" aria-label="- Piih Subject Surat -" value="{{ old('subject_id', $val->subject_id) }}" name="subject_id" placeholder="Perihal">
                                     @if($val->subject_id)
                                     <option value="{{$val->subject_id}}" selected>{{$val->subject->subject_name}}</option>
                                     <option value="">---- Pilih Subject----</option>
@@ -37,30 +37,60 @@
                                     @else
                                     @endif
                                 </select>
+                                <!-- error message untuk subject_id -->
+                                @error('subject_id')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="keterangan" class="col-sm-3 col-form-label">Keterangan</label>
                             <div class="col-sm-9">
-                                <textarea type="text" class="form-control" name="keterangan" required placeholder="Deskripsi">{{ old('keterangan', $val->keterangan) }}</textarea>
+                                <textarea type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" placeholder="Deskripsi">{{ old('keterangan', $val->keterangan) }}</textarea>
+                                <!-- error message untuk keterangan -->
+                                @error('keterangan')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tujuan" class="col-sm-3 col-form-label">Tujuan</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="tujuan" required placeholder="Tujuan" value="{{ old('tujuan', $val->tujuan) }}">
+                                <input type="text" class="form-control @error('tujuan') is-invalid @enderror" name="tujuan" placeholder="Tujuan" value="{{ old('tujuan', $val->tujuan) }}">
+                                <!-- error message untuk tujuan -->
+                                @error('tujuan')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tanggal" class="col-sm-3 col-form-label">Tanggal</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" name="tgl" value="{{ old('tgl', $val->tgl) }}" required>
+                                <input type="date" class="form-control @error('tgl') is-invalid @enderror" name="tgl" value="{{ old('tgl', $val->tgl) }}">
+                                <!-- error message untuk tgl -->
+                                @error('tgl')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="pembuat" class="col-sm-3 col-form-label">Pembuat</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="pembuat" required placeholder="Pembuat" value="{{ old('pembuat', $val->pembuat) }}">
+                                <input type="text" class="form-control @error('pembuat') is-invalid @enderror" name="pembuat" placeholder="Pembuat" value="{{ old('pembuat', $val->pembuat) }}">
+                                <!-- error message untuk pembuat -->
+                                @error('pembuat')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
 

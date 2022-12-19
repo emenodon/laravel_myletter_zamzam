@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Suratout;
 use App\Models\Subject;
@@ -60,6 +60,14 @@ class SuratoutController extends Controller
 
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'subject_id'     => 'required',
+            'keterangan'   => 'required|min:3|max:255',
+            'tujuan'   => 'required|min:3|max:50',
+            'tgl'   => 'required',
+            'pembuat'   => 'required|min:3',
+        ]);
         function getRomawi($bln){
             switch ($bln){
                 case 1: 
@@ -129,9 +137,15 @@ class SuratoutController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'subject_id'     => 'required',
+            'keterangan'   => 'required|min:3|max:255',
+            'tujuan'   => 'required|min:3|max:50',
+            'tgl'   => 'required',
+            'pembuat'   => 'required|min:3',
+        ]);
+
         $data = Suratout::where('id', $id)->first();
-        $subname = Subject::where('id', $request->subject_id)->get();
-        $sub = $subname[0]->inisial;
         $data->update([
             'subject_id' => $request->subject_id,
             'keterangan' => $request->keterangan,

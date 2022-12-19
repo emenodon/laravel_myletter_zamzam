@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'admin',
                 'email' => 'admin@ad.min',
-                'nama_lengkap' => 'admintod',
+                'nama_lengkap' => 'adminodon',
                 'password' => Hash::make('adminnnn'),
                 'jabatan_id' => '1'
             ]
